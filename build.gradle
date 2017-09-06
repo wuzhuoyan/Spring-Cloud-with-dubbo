@@ -35,11 +35,11 @@ subprojects {
         mavenCentral()
         maven { url "https://repo.spring.io/snapshot" }
         maven { url "https://repo.spring.io/milestone" }
-        maven { url "http://xxx.ds.cn:xxxx/nexus/content/groups/public/" }
+        maven { url "http://nexus.ds.cn:8081/nexus/content/groups/public/" }
     }
 
     uploadArchives {
-        def nexusUrl = "http://xxx.ds.cn:xxxx:8081/nexus/content/repositories/snapshots/"
+        def nexusUrl = "http://nexus.ds.cn:8081/nexus/content/repositories/snapshots/"
         configuration = configurations.archives
         repositories.mavenDeployer {
             repository(url: nexusUrl) {
