@@ -1,0 +1,48 @@
+server:
+  port: 5679
+
+spring:
+  application:
+    name: demo.consumer
+  cloud:
+    loadbalancer:
+      retry:
+        enabled: true
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://mine.ds.cn:1111/eureka/,http://mine.ds.cn:1112/eureka/,http://mine.ds.cn:1113/eureka/
+  instance:
+    prefer-ip-address: true
+    lease-renewal-interval-in-second: 2 # default 30
+    lease-expiration-duration-in-seconds: 5 # default 90
+
+feign:
+  hystrix:
+    enabled: false #默认开启，关闭它，使用javanica的@HytrixCommand包裹,配置更方便
+
+
+#hystrix: #具体配置请看:https://github.com/Netflix/Hystrix/wiki/Configuration
+#  command: #service1 的所有接口方法的统一配置: personal.leo.tutorial.netflix.service0.client.config.Service1ClientConfig
+#    default: # 全局配置
+#      execution.isolation.thread.timeoutInMilliseconds: 3000
+#    Service1Client#tips(int): #方法级别控制.  HystrixCommandKey 的 pattern,请看 feign.Feign.configKey(Class,Method)
+#      execution.isolation.thread.timeoutInMilliseconds: 4000
+#      #类级别控制请看 personal.leo.tutorial.netflix.service0.client.config.Service1ClientConfig
+hystrix:
+  command:
+    default:
+      execution.isolation.thread.timeoutInMilliseconds: 20000
+    FeignWithHytrixCommandSample#helloWithFallback: #方法级别控制
+      fallback.enabled: true
+
+demo.service:
+  ribbon:
+    ConnectTimeout: 250
+    ReadTimeout: 1000
+    OkToRetryOnAllOperations: true
+    MaxAutoRetries: 1
+    MaxAutoRetriesNextServer: 2
+    ServerListRefreshInterval: 2000
+

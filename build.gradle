@@ -1,0 +1,74 @@
+group 'samples'
+version '1.0-SNAPSHOT'
+
+buildscript {
+    ext {
+        springBootVersion = '1.4.0.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+// 所有子项目的通用配置
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'spring-boot'
+    apply plugin: 'eclipse'
+    apply plugin: 'idea'
+    apply plugin: 'maven-publish'
+    apply plugin: 'maven'
+
+    group 'samples'
+
+    // JVM 版本号要求
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+
+    // java编译的时候缺省状态下会因为中文字符而失败
+    [compileJava, compileTestJava, javadoc]*.options*.encoding = 'UTF-8'
+
+    repositories {
+        mavenCentral()
+        maven { url "https://repo.spring.io/snapshot" }
+        maven { url "https://repo.spring.io/milestone" }
+        maven { url "http://xxx.ds.cn:xxxx/nexus/content/groups/public/" }
+    }
+
+    uploadArchives {
+        def nexusUrl = "http://xxx.ds.cn:xxxx:8081/nexus/content/repositories/snapshots/"
+        configuration = configurations.archives
+        repositories.mavenDeployer {
+            repository(url: nexusUrl) {
+                authentication(userName: "deployment", password: "deployment")
+            }
+        }
+    }
+
+    dependencyManagement {
+        imports {
+            mavenBom 'org.springframework.cloud:spring-cloud-dependencies:Camden.SR3'
+        }
+    }
+
+    dependencies {
+        /* 容器*/
+        compile("org.springframework.boot:spring-boot-starter-web")
+
+        /* Spring Cloud*/
+        compile 'org.springframework.cloud:spring-cloud-starter-config'
+        compile 'org.springframework.cloud:spring-cloud-starter-eureka'
+        compile 'org.springframework.cloud:spring-cloud-starter-feign' // 包含 ribbon
+
+        /* 断路器及它的monitor */
+        compile 'org.springframework.cloud:spring-cloud-starter-hystrix'
+        compile 'org.springframework.cloud:spring-cloud-starter-hystrix-dashboard'
+        compile 'org.springframework.boot:spring-boot-starter-actuator'
+
+        testCompile("org.springframework.boot:spring-boot-starter-test")
+    }
+
+}

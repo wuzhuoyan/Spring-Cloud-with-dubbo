@@ -1,0 +1,113 @@
+//group 'samples'
+version '1.0-SNAPSHOT'
+
+//buildscript {
+//    ext {
+//        springBootVersion = '1.4.0.RELEASE'
+//    }
+//    repositories {
+//        mavenCentral()
+//    }
+//    dependencies {
+//        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+//    }
+//}
+
+//apply plugin: 'java'
+//apply plugin: 'spring-boot'
+//apply plugin: 'idea'
+
+//repositories {
+//    mavenCentral()
+//    maven { url "https://repo.spring.io/snapshot" }
+//    maven { url "https://repo.spring.io/milestone" }
+//}
+
+//dependencyManagement {
+//    imports {
+//        mavenBom 'org.springframework.cloud:spring-cloud-dependencies:Camden.SR3'
+//    }
+//}
+
+/* Jetty config 加入这行 exclude spring-boot-starter-web内含的tomcat */
+configurations {
+    compile.exclude module: "spring-boot-starter-tomcat"
+}
+
+dependencies {
+/*----------API---------------*/
+//    compile project(':serviceApi')
+    compile 'samples:serviceApi:1.0-SNAPSHOT'
+    // =
+    /* Spring Cloud */
+//    compile 'org.springframework.cloud:spring-cloud-starter-config'
+//    compile 'org.springframework.cloud:spring-cloud-starter-eureka'
+//    compile 'org.springframework.cloud:spring-cloud-starter-feign'
+    /* 容器 */
+//    compile("org.springframework.boot:spring-boot-starter-web")
+    /* 断路器及它的monitor */
+//    compile 'org.springframework.cloud:spring-cloud-starter-hystrix'
+//    compile 'org.springframework.cloud:spring-cloud-starter-hystrix-dashboard'
+//    compile 'org.springframework.boot:spring-boot-starter-actuator'
+    /* 测试 */
+//    testCompile("org.springframework.boot:spring-boot-starter-test")
+
+/*----------其他---------------*/
+
+    /* Jetty ,config exclude tomcat之后才可以使用jetty */
+    compile("org.springframework.boot:spring-boot-starter-jetty")
+
+    /* war支持, tomcat的jsp内嵌*/
+    /*
+        1. With Tomcat it should work if you use war packaging, i.e. an executable war will work,
+            and will also be deployable to a standard container (not limited to, but including Tomcat).
+            An executable jar will not work because of a hard coded file pattern in Tomcat.
+        2. With Jetty it should work if you use war packaging, i.e. an executable war will work,
+            and will also be deployable to any standard container.
+        3. Undertow does not support JSPs.
+     */
+//    ext{
+//        tomcatVersion = '8.0.45'
+//    }
+//    providedCompile "org.apache.tomcat.embed:tomcat-embed-core:${tomcatVersion}"
+//    providedCompile "org.apache.tomcat.embed:tomcat-embed-jasper:${tomcatVersion}"
+//    providedCompile "org.apache.tomcat.embed:tomcat-embed-logging-log4j:${tomcatVersion}"
+
+    /* JSTL */
+//    compile("javax.servlet:jstl")
+
+    /* SPRING-JPA 依赖hibernate*/
+//    compile("org.springframework.boot:spring-boot-starter-data-jpa")
+
+    /* JDBC Template*/
+//    compile "org.springframework.boot:spring-boot-starter-jdbc"
+
+    /* MySQL Connector*/
+//    compile("mysql:mysql-connector-java:5.1.40")
+
+    /* Thrift */
+//    compile 'org.apache.thrift:libthrift:0.10.0'
+
+    /* Hessian */
+//    compile group: 'com.caucho', name: 'hessian', version: '4.0.38'
+
+    /* zookeeper 要去掉里面的log4j才能启用*/
+//    compile group: 'org.apache.zookeeper', name: 'zookeeper', version: '3.4.9'
+
+    /* Dubbo */
+//    compile ('com.alibaba:dubbo:2.8.4'){
+//        exclude group:"org.springframework"
+//    }
+//    compile 'org.javassist:javassist:3.15.0-GA'
+//    compile 'io.netty:netty:3.10.6.Final'
+//    compile 'com.101tec:zkclient:0.4'
+//    compile 'com.alibaba:fastjson:1.2.24'
+//    compile 'ch.qos.logback:logback-classic:1.1.7'
+//    compile 'org.projectlombok:lombok:1.16.14'
+//    compile 'org.apache.httpcomponents:httpclient:4.5.3'
+//    compile 'org.apache.httpcomponents:fluent-hc:4.5.2'
+
+    /* 业务依赖 */
+//    compile 'com.gac.activity:activity-api:1.6.0-SNAPSHOT'
+//    compile 'com.gac.common:common-domain:1.0.2-SNAPSHOT'
+}

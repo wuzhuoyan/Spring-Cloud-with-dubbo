@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <dubbo:application name="dubbo-sample" owner="programmer" organization="dubbox" />
+    <dubbo:consumer check="false" />
+    <dubbo:registry protocol="zookeeper" address="10.8.75.75:2181,10.8.75.76:2181,10.8.75.77:2181" />
+
+    <dubbo:reference generic="true" id="activityServiceWithGeneric" interface="com.gac.activity.service.ActivityService"
+                     version="1.0.1" validation="false" />
+
+    <import resource="classpath*:/META-INF/*-reference.xml" />
+</beans>

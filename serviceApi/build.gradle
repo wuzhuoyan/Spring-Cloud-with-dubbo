@@ -1,0 +1,69 @@
+group 'samples'
+version '1.0-SNAPSHOT'
+//
+//apply plugin: 'java'
+//apply plugin: 'spring-boot'
+//apply plugin: 'maven-publish'
+//apply plugin: 'maven'
+//
+//
+//def nexusUrl ="http://xxx.ds.cn:xxxx/nexus/content/repositories/releases/"
+//def nexusUrl ="http://xxx.ds.cn:xxxx/nexus/content/repositories/snapshots/"
+////if(version.endsWith("-SNAPSHOT")) {
+////    nexusUrl ="http://xxx.ds.cn:xxxxnexus/content/repositories/snapshots/"
+////}
+//
+//
+//uploadArchives {
+//    configuration = configurations.archives
+//    repositories.mavenDeployer {
+//        repository(url: nexusUrl) {
+//            authentication(userName: "deployment", password: "deployment")
+//            pom.groupId = "$project.group"
+//            pom.artifactId = "$project.name"
+//            pom.version = "$project.version"
+//        }
+//    }
+//}
+//
+//repositories {
+//    mavenCentral()
+//    maven { url "https://repo.spring.io/snapshot" }
+//    maven { url "https://repo.spring.io/milestone" }
+//}
+//
+//buildscript {
+//    ext {
+//        springBootVersion = '1.4.0.RELEASE'
+//    }
+//    repositories {
+//        mavenCentral()
+//    }
+//    dependencies {
+//        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+//    }
+//}
+//
+//dependencyManagement {
+//    imports {
+//        mavenBom 'org.springframework.cloud:spring-cloud-dependencies:Camden.SR3'
+//    }
+//}
+//
+//dependencies {
+//
+//    /* 容器*/
+//    compile("org.springframework.boot:spring-boot-starter-web")
+//
+//    /* Spring Cloud*/
+//    compile 'org.springframework.cloud:spring-cloud-starter-config'
+//    compile 'org.springframework.cloud:spring-cloud-starter-eureka'
+//    compile 'org.springframework.cloud:spring-cloud-starter-feign' // 包含 ribbon
+//
+//    /* 断路器及它的monitor */
+//    compile 'org.springframework.cloud:spring-cloud-starter-hystrix'
+//    compile 'org.springframework.cloud:spring-cloud-starter-hystrix-dashboard'
+//    compile 'org.springframework.boot:spring-boot-starter-actuator'
+//
+//    testCompile("org.springframework.boot:spring-boot-starter-test")
+//}
