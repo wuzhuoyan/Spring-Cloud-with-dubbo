@@ -1,4 +1,4 @@
-rootProject.name = 'spingCloud'
+rootProject.name = 'spring-cloud-with-dubbo'
 include 'eureka'
 include 'zuul'
 include 'turbine'
