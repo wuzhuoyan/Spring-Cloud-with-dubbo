@@ -84,7 +84,7 @@ host:10.8.71.30, port:9003, service_id:demo.service
 ## 相对深入的主题
 
 1. [Eureka](eureka/README.md)
-3. [Ribbon](doc/ribbon-feign.md)
+3. [Ribbon](https://github.com/wuzhuoyan/spring-cloud-with-dubbo/blob/master/doc/ribbon-feign.md#ribbon-基于http-rest-url的调用方式)
 4. [Feign](doc/ribbon-feign.md)
 5. [Hystrix(Javanica-Hystrix)](doc/hystrix.md)
 6. Turbine

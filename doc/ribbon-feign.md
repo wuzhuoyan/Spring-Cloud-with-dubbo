@@ -91,14 +91,15 @@ public class Application extends SpringBootServletInitializer {
 * @SpringCloudApplication = @SpringBootApplication + @EnableDiscoveryClient + @EnableCircuitBreaker
 * @EnableDiscoveryClient =  读配置并注册本程序到eureka
 
-## serviceConsumer 实现
+### serviceConsumer 实现
 加入依赖 
 ~~~
 compile 'samples:serviceApi:1.0-SNAPSHOT'
 ~~~
 启动类[ConsumerMain.java](../serviceConsumer/src/main/java/sample/ds/cn/ConsumerMain.java)开启Feign标注
 ~~~
-@EnableFeignClients // 就是这个，它会扫描启动类当前及以下包的带@FeignClient的东西
+@EnableFeignClients // 它会扫描启动类当前及以下包的带@FeignClient的东西, 如要扫额外的包方式如 -->
+// --> @EnableFeignClients(basePackages = {"com.gac", "sample.ds"})
 @SpringCloudApplication
 
 ...
