@@ -23,13 +23,15 @@ feign:
     enabled: false #默认开启，关闭它，使用javanica的@HytrixCommand包裹,配置更方便
 
 
-#hystrix: #具体配置请看:https://github.com/Netflix/Hystrix/wiki/Configuration
-#  command: #service1 的所有接口方法的统一配置: personal.leo.tutorial.netflix.service0.client.config.Service1ClientConfig
+# hystrix: #具体配置请看:https://github.com/Netflix/Hystrix/wiki/Configuration
+# 类级别控制请看 https://github.com/leoChaoGlut/spring-cloud-tutorial/blob/master/tutorial-netflix/tutorial-netflix-service0/src/main/java/personal/leo/tutorial/netflix/service0/client/config/Service1ClientConfig.java
+# 或sample.ds.cn.consumer.RestTemplateWithHytrixCommandSample的@DefaultProperties
+#  command:
 #    default: # 全局配置
 #      execution.isolation.thread.timeoutInMilliseconds: 3000
 #    Service1Client#tips(int): #方法级别控制.  HystrixCommandKey 的 pattern,请看 feign.Feign.configKey(Class,Method)
 #      execution.isolation.thread.timeoutInMilliseconds: 4000
-#      #类级别控制请看 personal.leo.tutorial.netflix.service0.client.config.Service1ClientConfig
+#
 hystrix:
   command:
     default:
