@@ -1,5 +1,3 @@
-[TOC]
-
 # spring-cloud-with-dubbo
 
 ## 用来做什么？(What does it do?)
@@ -17,7 +15,13 @@
 Spring Cloud 是一个快速迭代的活跃项目，为了在碰到问题时能通过多种渠道获得解决方案，也因为作者过去使用的习惯版本的原因，
 这个示范工程选用Camden.SR3。
 
+### 整体依赖
+
+请参阅[build.gradle](build.gradle)
+
 ### 工程依赖关系及用途 (Dependices & Do what)
+
+请参阅[settings.gradle](settings.gradle), 及以下描述
 
 * eureka（注册中心）
 * serviceApi（基于接口的服务契约定义）
