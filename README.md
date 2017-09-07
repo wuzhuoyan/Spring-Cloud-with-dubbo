@@ -17,7 +17,8 @@ Spring Cloud 是一个快速迭代的活跃项目，为了在碰到问题时能�
 
 ### 整体依赖
 
-请参阅[build.gradle](build.gradle)
+请参阅[build.gradle](build.gradle)<br>
+请自行更改仓库域名nexus.ds.cn对应的ip地址
 
 ### 工程依赖关系及用途 (Dependices & Do what)
 
@@ -83,9 +84,9 @@ host:10.8.71.30, port:9003, service_id:demo.service
 ## 相对深入的主题
 
 1. [Eureka](eureka/README.md)
-3. Ribbon
-4. Feign
-5. Hystrix(Javanica-Hystrix)
+3. [Ribbon](doc/ribbon-feign.md)
+4. [Feign](doc/ribbon-feign.md)
+5. [Hystrix(Javanica-Hystrix)](doc/hystrix.md)
 6. Turbine
 7. Zuul
 

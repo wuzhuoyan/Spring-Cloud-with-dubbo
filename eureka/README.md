@@ -68,7 +68,7 @@ eureka.client.serviceUrl.defaultZone=http://eureka.master:1111/eureka/,http://eu
 
 以[application-node1.properties](main/resource/application-node1.properties)为例：<br>
 
-see[https://github.com/spring-cloud/spring-cloud-netflix/blob/a7398842078319dcaa353a708c12bb7b9fa85a4e/docs/src/main/asciidoc/spring-cloud-netflix.adoc#peer-awareness](https://github.com/spring-cloud/spring-cloud-netflix/blob/a7398842078319dcaa353a708c12bb7b9fa85a4e/docs/src/main/asciidoc/spring-cloud-netflix.adoc#peer-awareness)
+see [eureka配置及集群参考资料](https://github.com/spring-cloud/spring-cloud-netflix/blob/a7398842078319dcaa353a708c12bb7b9fa85a4e/docs/src/main/asciidoc/spring-cloud-netflix.adoc#peer-awareness)
 
 * spring.application.name=eureka.node # 应用程序名，也是注册在eureka中的应用程序名
 * server.port=1111 # 使用什么端口开启服务
